@@ -1,0 +1,30 @@
+<!--<mvc:View-->
+<!--	controllerName="Gail.Medical_Claim.controller.App"-->
+<!--	displayBlock="true"-->
+<!--	height="100%"-->
+<!--	xmlns="sap.m"-->
+<!--	xmlns:mvc="sap.ui.core.mvc">-->
+<!--	<App-->
+<!--		id="app"-->
+<!--		>-->
+<!--		<f:FlexibleColumnLayout-->
+<!--			id="layout"-->
+<!--			layout="{appView>/layout}"-->
+<!--			backgroundDesign="Translucent">-->
+<!--		</f:FlexibleColumnLayout>-->
+<!--	</App>-->
+<!--</mvc:View>-->
+
+<mvc:View
+		controllerName="Gail.Medical_Claim.controller.App"
+		xmlns:mvc="sap.ui.core.mvc"
+		displayBlock="true"
+	
+		xmlns="sap.m">
+	<SplitApp id="idAppControl" visible="{RouteModel>/split}"/>
+		<App id = "app" visible="{RouteModel>/normal}">
+		<pages visible="{RouteModel>/normal}">
+			
+		</pages >
+		</App >
+</mvc:View>

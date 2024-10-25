@@ -1,0 +1,61 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<!--<VBox class="sapUiSmallMargin">-->
+		<f:SimpleForm id="formHospitalizationEdit"
+			editable="true"
+			layout="ColumnLayout"
+			title="Hospitalization" >
+			<f:content>
+				<Label text="Patient" />
+				<Select id="hPatientE" width="auto" items="{InitialModel>/f4_patientSet}" selectedKey="{detailMasterModel>Fcnam}" change="ontextChange">
+						<core:Item key="{InitialModel>Text}" text="{InitialModel>Text}" />
+				</Select>
+				
+				<Label text="Date From" />
+				<DatePicker id="hDateFromE" dateValue="{detailMasterModel>Cdt01}"  change="onchangeNextDate"/>
+				
+				<Label text="Date To" />
+				<DatePicker id="hDateToE" dateValue="{detailMasterModel>Cdt02}" change="ontextChange"/>
+				
+				<Label text="Name of Hospital" />
+				<Input value="{detailMasterModel>ClinicName}" id="hHospitalNameE" maxLength="50" placeholder="Max 50 characters"  liveChange="ontextChange"/>
+				
+				<Label text="Recom. &amp; Permission By HR" />
+				<Select id="hRecommendedE" width="auto" items="{InitialModel>/f4_recommendedSet}" selectedKey="{detailMasterModel>Recommended}" change="ontextChange" >
+						<core:Item key="{InitialModel>Value}" text="{InitialModel>Text}" />
+				</Select>
+				
+				<Label text="Cash Memo" />
+				<Input value="{detailMasterModel>ConsultNo}" id="hCashMemoE" maxLength="30" placeholder="Max 30 characters"  liveChange="ontextChange"/>
+				
+				<Label text="Place of Treatment" />
+				<Input value="{detailMasterModel>Place}" id="hTreatmentPlaceE" maxLength="50" placeholder="Max 50 characters"  liveChange="ontextChange"/>
+				
+				<Label text="Empaneled" />
+				<Select id="hEmpaneledE" width="auto" items="{InitialModel>/f4_empanelledSet}" selectedKey="{detailMasterModel>Empaneled}" change="ontextChange">
+					<core:Item key="{InitialModel>Value}" text="{InitialModel>Text}" />
+				</Select>
+				
+				<!--<Label text="Recommended &amp; Permission By HR" />-->
+				<!--<Select id="hRecommendedE" width="auto" items="{InitialModel>/f4_recommendedSet}" selectedKey="{detailMasterModel>Recommended}" >-->
+				<!--		<core:Item key="{InitialModel>Value}" text="{InitialModel>Text}" />-->
+				<!--</Select>-->
+				
+				<Label text="Tax Exemption" />
+				<Select id="hTaxExmpE" width="auto" change="OnTaxSelection" items="{InitialModel>/F4_Tax_ExempSet}" selectedKey="{detailMasterModel>C10t1}">
+						<core:Item key="{InitialModel>Text}" text="{InitialModel>Text}" />
+				</Select>
+				
+				<Label text=" Requested Amount" />
+				<Input value="{detailMasterModel>Rqamt}" id="hReqAmtE" type="Number" maxLength="10" liveChange="onLiveReqAmt" placeholder="Max 10 digits"/>
+				<Label text="CovidExpensess" />
+                <Select id="covidRequestHos_edit" selectedKey="{detailMasterModel>C10t3}" width="auto" items="{/data}" change="ontextChange">
+						<core:Item key="{key}" text="{text}" />
+				</Select>	
+			</f:content>
+		</f:SimpleForm>
+	<!--</VBox>-->
+</core:FragmentDefinition>

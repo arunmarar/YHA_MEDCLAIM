@@ -1,0 +1,114 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="Gail.Medical_Claim.controller.Attachment"
+	xmlns:html="http://www.w3.org/1999/xhtml" >
+	<App>
+		<pages>
+			<Page title="Attachments" titleAlignment="Center"
+				showNavButton="true"
+				navButtonPress="onNavBack">
+				<content>
+					
+					<Panel id="panelPdf" visible="{buttonsModel>/prevAppPdf}">
+						<headerToolbar>
+							<OverflowToolbar height="3rem">
+								<Title text="Previous Approval"/>
+							</OverflowToolbar>
+						</headerToolbar>
+						<Toolbar id="pdfToolbar">
+							<Label text="Approval.pdf" design="Bold"></Label>
+							<Text id="pdfText" text=""> </Text>	
+							<ToolbarSpacer></ToolbarSpacer>
+							<Button id="displayPDF" press="onDisplayApprovalPDF" icon="sap-icon://show"></Button>
+							<Button id="deletePDF" press="onDeleteApprovalPDF" icon="sap-icon://delete"></Button>	
+						</Toolbar>
+					</Panel>
+					
+						<UploadCollection id="delayUploadColl" class="sapUiSmallMargin" 
+									  maximumFilenameLength="55" maximumFileSize="3" 
+									  multiple="true"
+									  fileType= "{fileTypes>/selected}"
+									  sameFilenameAllowed="true" instantUpload="false" 
+									  noDataDescription="Drop files or use the &quot;+&quot; button for pending upload"
+									  change="onApprovalChange"
+									  uploadUrl="" 
+									  fileDeleted="onFileDeletedD" 
+									  filenameLengthExceed="onFilenameLengthExceedD" 
+									  fileSizeExceed="onFileSizeExceedD"
+									  typeMissmatch="onTypeMissmatchD"
+									  uploadComplete="onUploadCompleteD" 
+									  beforeUploadStarts="onBeforeUploadStartsD"
+									  uploadButtonInvisible="false"
+									  uploadEnabled="true"
+									  visible="{buttonsModel>/showDelayed}">
+								<toolbar>
+									<OverflowToolbar>
+										<Title text="Attach Delay Approval" id="delayUploadCollTitle"></Title>
+										<ToolbarSpacer></ToolbarSpacer>
+										<UploadCollectionToolbarPlaceholder />
+									</OverflowToolbar>
+								</toolbar>
+					</UploadCollection>
+					
+					
+					<Panel id="panelPdf2" visible="{buttonsModel>/prevPdf}">
+						<headerToolbar>
+							<OverflowToolbar height="3rem">
+								<Title text="Previous Bills"/>
+							</OverflowToolbar>
+						</headerToolbar>
+						<Toolbar id="pdfToolbar2">
+							<Label text="ExpenseReport.pdf" design="Bold"></Label>
+							<Text id="pdfText2" text=""> </Text>	
+							<ToolbarSpacer></ToolbarSpacer>
+							<Button id="displayPDF2" press="onDisplayPDF2" icon="sap-icon://show"></Button>	
+							<Button id="deletePDF2" press="onDeletePDF2" icon="sap-icon://delete"></Button>	
+						</Toolbar>
+					</Panel>
+				
+			
+					
+					
+					
+					<UploadCollection id="uploadColl" class="sapUiSmallMargin"
+									maximumFilenameLength="55" maximumFileSize="10"
+									multiple="true" 
+									fileType= "{fileTypes>/selected}"
+									sameFilenameAllowed="true" instantUpload="false" 
+									noDataDescription="Drop files or use the &quot;+&quot; button for pending upload"
+									noDataText="No Files Attached"
+									change="onChange"
+									uploadUrl="" 
+									mode="SingleSelectMaster"
+									filenameLengthExceed="onFilenameLengthExceed"
+									fileSizeExceed="onFileSizeExceed"
+									fileDeleted="onFileDeleted"
+									typeMissmatch="onTypeMissmatch"
+									uploadComplete="onUploadComplete" 
+									beforeUploadStarts="onBeforeUploadStarts"
+									uploadButtonInvisible="false"
+									  uploadEnabled="true">
+						<toolbar>
+							<OverflowToolbar>
+								<Title text="Attach Bills" id="uploadCollTitle"></Title>
+								<ToolbarSpacer></ToolbarSpacer>
+								<UploadCollectionToolbarPlaceholder />
+							</OverflowToolbar>
+						</toolbar>
+					</UploadCollection>
+					
+					
+					
+					
+				</content>
+				<footer>
+					<OverflowToolbar>
+						<!--<Button text=""type="Emphasized" id="draftBtn" press="onSaveDraft"  visible="true"></Button>-->
+						<ToolbarSpacer></ToolbarSpacer>
+						<Button text="Preview" type="Emphasized" id="btnPreview" press="onPreview"  visible="true"></Button>
+						<Button text="Next" type="Accept" id="mReview" press="onReview" visible="true"></Button>
+					</OverflowToolbar>
+				</footer>
+		
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

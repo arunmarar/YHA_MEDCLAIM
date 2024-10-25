@@ -1,0 +1,100 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<!--<VBox class="sapUiSmallMargin">-->
+		<!--<f:SimpleForm id="SimpleFormDisplay"-->
+		<!--	editable="false"-->
+		<!--	layout="ResponsiveGridLayout"-->
+		<!--	title="Consultation"-->
+		<!--	labelSpanXL="6"-->
+		<!--	labelSpanL="4"-->
+		<!--	labelSpanM="2"-->
+		<!--	labelSpanS="2"-->
+		<!--	adjustLabelSpan="true"-->
+		<!--	emptySpanXL="4"-->
+		<!--	emptySpanL="4"-->
+		<!--	emptySpanM="4"-->
+		<!--	emptySpanS="2"-->
+		<!--	columnsXL="2"-->
+		<!--	columnsL="1"-->
+		<!--	columnsM="1"-->
+		<!--	singleContainerFullSize="false" >-->
+		<!--	<f:content>-->
+				<!--<core:Title text="Office" />-->
+		<!--		<Label text="Patient" />-->
+		<!--		<Input value="Patient" />-->
+		<!--		<Label text="Claim Date" />-->
+		<!--		<Input value="12/12/2019" />-->
+		<!--		<Label text="Name of Physician" />-->
+		<!--		<Input value="" />-->
+		<!--		<Label text="Consultation Type" />-->
+		<!--		<Input value="" />-->
+		
+		<!--		<Label text="Consult. No" />-->
+		<!--		<Input value="" />-->
+		<!--		<Label text="Out Station" />-->
+		<!--		<Input value="" />-->
+		<!--		<Label text="City type" />-->
+		<!--		<Input value="Patient" />-->
+		<!--		<Label text="Place" />-->
+		<!--		<Input value="12/12/2019" />-->
+		<!--		<Label text="Requested Amount" />-->
+		<!--		<Input value="" />-->
+		<!--		<Label text="Approved Amount " />-->
+		<!--		<Input value="" />-->
+		<!--		<Label text="Remarks Dropdown " />-->
+		<!--		<Input value="" />-->
+				
+				
+				
+				
+		<!--	</f:content>-->
+		<!--</f:SimpleForm>-->
+	<f:SimpleForm id="formTestsEdit"
+			editable="true"
+			layout="ColumnLayout"
+			title="Tests" >
+			<f:content>
+				<Label text="Patient" />
+				<Select id="tPatientE" width="auto" items="{InitialModel>/f4_patientSet}" selectedKey="{detailMasterModel>Fcnam}" change="ontextChange">
+						<core:Item key="{InitialModel>Text}" text="{InitialModel>Text}" />
+				</Select>
+				
+				<Label text="Invoice Date" />
+				<DatePicker id="tClaimDateE" dateValue="{detailMasterModel>Cdt01}" change="ontextChange"/>
+				
+				<Label text="Cash Memo No" />
+				<Input value="{detailMasterModel>ConsultNo}" id="tCashMemoE" maxLength="30" placeholder="Max 30 characters"  liveChange="ontextChange"/>
+				
+				<Label text="Name of Clinic" />
+				<Input value="{detailMasterModel>ClinicName}" id="tClinicNameE" maxLength="50" placeholder="Max 50 characters"  liveChange="ontextChange"/>
+				
+				<Label text="Particulars of Test" />
+				<Input value="{detailMasterModel>Particulars}" id="tParticularsE" maxLength="50"  placeholder="Max 50 characters"  liveChange="ontextChange"/>
+				
+				<Label text="Empaneled" />	
+				<Select id="tEmpaneledE" width="auto" items="{InitialModel>/f4_empanelledSet}" selectedKey="{detailMasterModel>Empaneled}" change="ontextChange">
+					<core:Item key="{InitialModel>Value}" text="{InitialModel>Text}" />
+				</Select>
+					
+				<Label text="Recommended" />
+				<!--<Input value="Yes" id="tRecommendedE" editable="false"/>-->
+				<Select id="tRecommendedE" width="auto" items="{InitialModel>/f4_recommendedSet}" selectedKey="{detailMasterModel>Recommended}" change="ontextChange" >
+						<core:Item key="{InitialModel>Value}" text="{InitialModel>Text}" />
+				</Select>
+				
+				<!--<Label text="Tax Exemption" />-->
+				<!--<Select id="tTaxExmpE" width="auto" change="OnTaxSelection" items="{InitialModel>/F4_Tax_ExempSet}" selectedKey="{detailMasterModel>C10t1}">-->
+				<!--		<core:Item key="{InitialModel>Text}" text="{InitialModel>Text}" />-->
+				<!--</Select>-->
+				
+				<Label text="Requested Amount" />
+				<Input value="{detailMasterModel>Rqamt}" id="tReqAmtE" type="Number" maxLength="10" liveChange="onLiveReqAmt" placeholder="Max 10 digits"/>
+				
+				
+			</f:content>
+		</f:SimpleForm>
+	<!--</VBox>-->
+</core:FragmentDefinition>

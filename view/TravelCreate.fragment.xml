@@ -1,0 +1,47 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<!--<VBox class="sapUiSmallMargin">-->
+		<f:SimpleForm id="formTravelCreate"
+			editable="true"
+			layout="ColumnLayout"
+			title="Travel Expenses" >
+			<f:content>
+				<Label text="Patient" />
+				<!-- Select changes by Usmana -->
+				<Select id="tePatient" width="auto" items="{patientModel>/patientData/}" change="ontextChange" forceSelection="false">
+						<core:Item key="{patientModel>Text}" text="{patientModel>Text}" />
+				</Select>
+				
+				<Label text="Departure Date" />
+				<DatePicker id="teDepDate" change="onchangeNextDate" />
+			
+				<Label text="Departure Place" />
+				<Input value="" id="teDepPlace" maxLength="50" placeholder="Max 50 characters" liveChange="ontextChange"/>
+			
+				<Label text="Arrival Date" />
+				<DatePicker id="teArvlDate" change="ontextChange"/>
+			
+				<Label text="Arrival Place" />
+				<Input value="" id="teArvlPlace" maxLength="50" placeholder="Max 50 characters" liveChange="ontextChange"/>
+			
+				<Label text="Travel Mode" />
+				<Select id="teTravelMode" width="auto" items="{InitialModel>/F4_travel_modeSet}" change="ontextChange">
+						<core:Item key="{InitialModel>Text}" text="{InitialModel>Text}" />
+				</Select>
+				
+				<Label text="Permission By HR" />
+				<!--<Input value="Yes" id="tRecommended" editable="false"/>-->
+				<Select id="teRecommended" width="auto" items="{InitialModel>/f4_recommendedSet}" change="ontextChange" >
+						<core:Item key="{InitialModel>Value}" text="{InitialModel>Text}" />
+				</Select>
+				
+				<Label text=" Request Amount" />
+				<Input value="" id="teReqAmt" type="Number" maxLength="10" liveChange="onLiveReqAmt" placeholder="Max 10 digits"/>
+				
+			</f:content>
+		</f:SimpleForm>
+	<!--</VBox>-->
+</core:FragmentDefinition>

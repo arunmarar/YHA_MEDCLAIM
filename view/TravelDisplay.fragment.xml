@@ -1,0 +1,53 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<!--<VBox class="sapUiSmallMargin">-->
+		<f:SimpleForm id="formTravelDisplay"
+			editable="false"
+			layout="ColumnLayout"
+			title="Travel Expenses" >
+			<f:content>
+				<Label text="Patient" />
+				<Text text="{detailMasterModel>Fcnam}" />
+			
+				<Label text="Departure Date" />
+				<Text text="{
+						path:'detailMasterModel>Cdt01',
+						formatter:'.formatter.formatReqDate'
+						}" />
+			
+				<Label text="Departure Place" />
+				<Text text="{detailMasterModel>DepPlace}" />
+			
+				<Label text="Arrival Date" />
+				<Text text="{
+						path:'detailMasterModel>Cdt02',
+						formatter:'.formatter.formatReqDate'
+						}" />
+			
+				<Label text="Arrival Place" />
+				<Text text="{detailMasterModel>ArrPlace}" />
+			
+				<Label text="Travel Mode" />
+				<Text text="{detailMasterModel>TravelMode}" />
+				
+				<Label text="Permission By HR" />
+				<Text text="{
+						path:'detailMasterModel>Recommended',
+						formatter:'.formatter.formatHRPermission'
+						}" />
+			
+				<Label text=" Request Amount" />
+				<Text text="{detailMasterModel>Rqamt}" />
+			
+				<Label text="Approved Amount" />
+				<Text text="{detailMasterModel>Apamt}" />
+				
+				<Label text="Remarks" />
+				<Text text="{detailMasterModel>Remarks}" />
+			</f:content>
+		</f:SimpleForm>
+	<!--</VBox>-->
+</core:FragmentDefinition>

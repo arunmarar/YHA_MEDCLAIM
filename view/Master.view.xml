@@ -1,0 +1,101 @@
+<mvc:View xmlns:core="sap.ui.core"
+	controllerName="Gail.Medical_Claim.controller.Master"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<!--<semantic:SemanticPage-->
+		<!--id="masterPage"-->
+		<!--preserveHeaderStateOnScroll="true"-->
+		<!--toggleHeaderOnTitleClick="false">-->
+
+		<!--<semantic:titleHeading>-->
+		<!--	<Title-->
+		<!--		id="masterPageTitle"-->
+		<!--				text="SEM Stitle"-->
+		<!--		level="H2"/>-->
+		
+				<!--text="{masterView>/title}"-->
+	
+		<!--</semantic:titleHeading>-->
+		<!--<semantic:content>-->
+			<!-- For client side filtering add this to the items attribute: parameters: {operationMode: 'Client'}}" -->
+		<Page title="{masterView>/title}"
+		showNavButton="true"
+		navButtonPress="onNavToInitial">
+		<content>
+			<List
+				id="list"
+				width="auto"
+				class="sapFDynamicPageAlignContent"
+				items="{
+					path: 'detailMasterModel>/'
+		
+				}"
+				busyIndicatorDelay="{masterView>/delay}"
+				noDataText="{masterView>/noDataText}"
+				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}"
+				growing="true"
+				growingScrollToLoad="true"
+				updateFinished=".onUpdateFinished"
+				selectionChange=".onSelectionChange">
+					<!--		sorter: {-->
+					<!--	path: '',-->
+					<!--	descending: false-->
+					<!--},-->
+					<!--groupHeaderFactory: '.createGroupHeader'-->
+				<headerToolbar>
+					<OverflowToolbar>
+						<!--<Button id="navInit" icon="sap-icon//:create" press="onNavToInitial"></Button>-->
+						<SearchField
+							id="searchField"
+							showRefreshButton="true"
+							tooltip="{i18n>masterSearchTooltip}"
+							search=".onSearch"
+							width="auto">
+							<!--<layoutData>-->
+							<!--	<OverflowToolbarLayoutData-->
+							<!--		minWidth="150px"-->
+							<!--		maxWidth="240px"-->
+							<!--		shrinkable="true"-->
+							<!--		priority="NeverOverflow"/>-->
+							<!--</layoutData>-->
+						</SearchField>
+						<ToolbarSpacer/>
+						<Button
+							id="remarksButton"
+							press="onRemarks"
+							icon="sap-icon://message-information"
+							type="Reject"/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<items>
+					<ObjectListItem
+						type="Navigation"
+						press=".onSelectionChange"
+						title="{
+								path:'detailMasterModel>C04t3',
+								formatter:'.formatter.formatItemType'
+								}"
+						intro="{detailMasterModel>Fcnam}"
+						number="{detailMasterModel>Rqamt}"
+						numberUnit="INR">
+						
+					</ObjectListItem>
+				</items>
+			</List>
+		</content>	
+		<footer>
+			<OverflowToolbar>
+				<Button text="Review" type="Accept" id="mReview" press="onReview" visible="{buttonsModel>/mReview}"></Button>
+				<Button text="Attachment" type="Emphasized" id="attachBtn" press="onAttachment"  visible="{buttonsModel>/mAttach}"></Button>
+				<ToolbarSpacer></ToolbarSpacer>
+				<Button text="Recall" type="Reject" id="revokeBtn" press="onRevoke" visible="{buttonsModel>/mRevoke}"></Button>
+				<Button text="Add Item" type="Emphasized" id="addMBtn" press="onAddM" visible="{buttonsModel>/mAdd}"></Button>
+				<!--<Button text="Delete Item" type="Reject" id="deleteMBtn" press="onDeleteM" visible="{buttonsModel>/mDelete}"></Button>-->
+			</OverflowToolbar>
+		</footer>
+			</Page>
+		<!--</semantic:content>-->
+	<!--</semantic:SemanticPage>-->
+</mvc:View>

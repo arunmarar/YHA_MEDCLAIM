@@ -1,0 +1,145 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="Gail.Medical_Claim.controller.Initial"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:semantic="sap.f.semantic" xmlns:fb="sap.ui.comp.filterbar" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" class="sapUiSizeCompact">
+	
+			<Page title="Medical Claim" titleAlignment="Center">
+				<!--<headerContent>-->
+				<!--	<Button text="New Claim"></Button>-->
+				<!--</headerContent>-->
+				<content>
+						<fb:FilterBar header="Claims" reset="onReset" search="onSearch" showRestoreButton="true" showClearButton="true">
+							<fb:filterGroupItems>
+								<fb:FilterGroupItem groupName="group1" groupTitle="group1" name="A" label="Claim" mandatory="false" partOfCurrentVariant="true" visibleInFilterBar="true">
+									<fb:control>
+										<Input id="inpClaim"/>
+									</fb:control>
+								</fb:FilterGroupItem>
+				
+								<fb:FilterGroupItem groupName="group1" groupTitle="group1" name="B" label="Status" mandatory="false" partOfCurrentVariant="true" visibleInFilterBar="true">
+									<fb:control>
+										<Select id="selStatus"
+											forceSelection="false"
+											selectedKey="" 
+											change="onSearch"
+											items="{InitialModel>/STATUSSet}">
+											<core:Item key="{InitialModel>Value}" text="{InitialModel>Text}" />
+											<!--<core:Item key="N" text="New" />-->
+											<!--<core:Item key="T" text="To Be Approved" />-->
+											<!--<core:Item key="P" text="Partially Approved" />-->
+											<!--<core:Item key="A" text="Approved" />-->
+											<!--<core:Item key="R" text="Rejected" />-->
+											<!--<core:Item key="D" text="Processing Complete" />-->
+											<!--<core:Item key="X" text="Deleted" />-->
+											<!--<core:Item key="B" text="To Be Processed" />-->
+											<!--<core:Item key="C" text="Closed" />-->
+											<!--<core:Item key="K" text="Cancelled" />-->
+											<!--<core:Item key="S" text="Return" />-->
+											
+										</Select>
+									</fb:control>				
+								</fb:FilterGroupItem>			
+											
+								<fb:FilterGroupItem groupName="group1" groupTitle="group1" name="C" label="From Date" mandatory="false" partOfCurrentVariant="true" visibleInFilterBar="true">
+									<fb:control>
+										<DatePicker id="fbDP"
+													change = "onSearch"></DatePicker>
+									</fb:control>
+								</fb:FilterGroupItem>
+								
+								<fb:FilterGroupItem groupName="group1" groupTitle="group1" name="D" label="To Date" mandatory="false" partOfCurrentVariant="true" visibleInFilterBar="true">
+									<fb:control>
+										<DatePicker id="fbDP2"
+													change = "onSearch"></DatePicker>
+									</fb:control>
+								</fb:FilterGroupItem>
+											
+											
+							</fb:filterGroupItems>				
+					    </fb:FilterBar>			<!--</l:VerticalLayout>-->
+
+				<Table id="tab1" growingScrollToLoad="true"
+							growingThreshold="7"
+							growing="true"
+							alternateRowColors="false"
+							items="{Initial>/}">
+							
+							<columns>
+								
+								 <!--<Column>-->
+							        
+							  <!--    </Column>-->
+							  <!--    <Column>-->
+							  <!--    </Column>-->
+								 <!-- <Column>-->
+							  <!--    </Column>-->
+								<Column  demandPopin="true" width="25%" >
+									<Text text="Claim No." />
+								</Column>
+								<Column  demandPopin="true" minScreenWidth="Desktop">
+									<Text text="Req. Date" />
+								</Column>
+								<Column  demandPopin="true">
+									<Text text="Status" />
+								</Column>
+								<Column  demandPopin="true">
+									<Text text="Request Amt" />
+								</Column>
+								<Column demandPopin="true">
+									<Text text="Approved Amt" />
+								</Column>
+							
+								
+							</columns>
+							<items>
+								<ColumnListItem id="columnId" 
+											press="onItemPress"
+											type="Navigation">
+									<cells>
+										<ObjectStatus
+											text="{Initial>Refnr}"
+											state="Information" />		
+										<!--<ObjectMarker-->
+										<!--	type=""-->
+										<!--	additionalInfo="{Refnr}"/>-->
+										<Text text="{
+													path:'Initial>Rqcdt',
+													formatter:'.formatter.formatReqDate'
+													}"></Text>
+										<ObjectStatus
+											text="{
+												parts:[
+														{path:'Initial>Cstat'},	
+														{path:'Initial>Errfg'}
+													],
+												formatter:'.formatter.statusText'
+											}"
+											state="{
+													parts:[
+														{path:'Initial>Cstat'},
+														{path:'Initial>Errfg'}
+														],
+													formatter:'.formatter.formatStatus'
+													}" />
+										<Label text="{Initial>Rqamt}" design="Bold"></Label>
+										<Label text="{Initial>Apamt}" design="Bold"></Label>
+										
+										
+										
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+				<!--</ScrollContainer>		-->
+				
+			</content>
+			<footer>
+				<OverflowToolbar>
+					<ToolbarSpacer/>
+						<Button type="Emphasized" id="createbtn" text="New Claim" press="onNewClaimPress" class="sapUiTinyMarginBegin"/>
+						<!--<Button type="Emphasized" id="editbtn"  text="Edit" press="onEditPress" class="sapUiTinyMarginEnd" ></Button>-->
+						<!--<Button type="Emphasized" id="displaybtn"  text="Display" press="onDisplayPress" class="sapUiTinyMarginEnd" ></Button>-->
+				
+				</OverflowToolbar>
+			</footer>
+			</Page>
+
+</mvc:View>

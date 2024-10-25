@@ -1,0 +1,71 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<!--<VBox class="sapUiSmallMargin">-->
+		<f:SimpleForm id="formHospitalizationDisplay"
+			editable="false"
+			layout="ColumnLayout"
+			title="Hospitalization" >
+			<f:content>
+				<Label text="Patient" />
+				<Text text="{detailMasterModel>Fcnam}" />
+				
+				<Label text="Date From" />
+				<Text text="{
+						path:'detailMasterModel>Cdt01',
+						formatter:'.formatter.formatReqDate'
+						}" />
+				
+				<Label text="Date To" />
+				<Text text="{
+						path:'detailMasterModel>Cdt02',
+						formatter:'.formatter.formatReqDate'
+						}" />
+				
+				<Label text="Name of Hospital" />
+				<Text text="{detailMasterModel>ClinicName}" />
+				
+				<Label text="Recom. &amp; Permission By HR" />
+				<Text text="{
+						path:'detailMasterModel>Recommended', 
+						formatter:'.formatter.formatYesNo'
+						}" />
+						
+				<Label text="Cash Memo" />
+				<Text text="{detailMasterModel>ConsultNo}" />
+				
+				<Label text="Place of Treatment" />
+				<Text text="{detailMasterModel>Place}" />
+				
+				<Label text="Empaneled" />
+				<Text text="{
+						path:'detailMasterModel>Empaneled',
+						formatter:'.formatter.formatYesNo'
+						}" />
+				
+				<!--<Label text="Recommended &amp; Permission By HR" />-->
+				<!--<Text text="{-->
+				<!--		path:'detailMasterModel>Recommended', -->
+				<!--		formatter:'.formatter.formatYesNo'-->
+				<!--		}" />-->
+				
+				<Label text="Tax Exemption" />
+				<Text text="{ path:'detailMasterModel>C10t1', formatter:'.formatter.formatTaxType' }"/>
+				
+				<Label text="Requested Amount" />
+				<Text text="{detailMasterModel>Rqamt}" />
+				
+				<Label text="Approved Amount" />
+				<Text text="{detailMasterModel>Apamt}" />
+				
+				<Label text="Remarks" />
+				<Text text="{detailMasterModel>Remarks}" />
+
+                 <Label text="CovidExpensess" />
+				<Text text="{detailMasterModel>C10t3}" />
+			</f:content>
+		</f:SimpleForm>
+	<!--</VBox>-->
+</core:FragmentDefinition>

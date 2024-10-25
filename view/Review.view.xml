@@ -1,0 +1,189 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="Gail.Medical_Claim.controller.Review"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<App>
+		<pages>
+			<Page title="Review-Submit Claim" showNavButton="true"
+			 navButtonPress="onNavBack">
+				<content>
+					<Panel id="panel1">
+						<!--<FlexBox-->
+						<!--	height="30px"-->
+						<!--	alignItems="Start"-->
+						<!--	justifyContent="Center">-->
+						<!--	<items>-->
+						<!--		<Label text="Employee Name/ ID: " textAlign="Right" ></Label>-->
+						<!--		<Label id="rEmpName" design="Bold" text="Unknown"></Label>-->
+						<!--	</items>-->
+						<!--</FlexBox>-->
+						<FlexBox
+							height="30px"
+							alignItems="Start"
+							justifyContent="Center">
+							<items>
+								<Label text="Total Amount: " textAlign="Right" ></Label>
+								<Label id="rTotalAmt" design="Bold"></Label>
+							</items>
+						</FlexBox>
+						<FlexBox
+							height="30px"
+							alignItems="Start"
+							justifyContent="Center">
+							<items>
+								<Label text="File Size: " textAlign="Right" ></Label>
+								<Label id="rFilesize" design="Bold" ></Label>
+							</items>
+						</FlexBox>
+					</Panel>
+					
+					<Panel id="panelPdf2">
+						<headerToolbar>
+							<OverflowToolbar height="3rem">
+								<Title text="Previous Attachments"/>
+							</OverflowToolbar>
+						</headerToolbar>
+						<Toolbar id="pdfToolbar2">
+							<Label text="ExpenseReport.pdf" design="Bold"></Label>
+							<Text id="pdfText3" text=""> </Text>	
+							<ToolbarSpacer></ToolbarSpacer>
+							<Button id="displayPDF2" press="onDisplayPDF2" icon="sap-icon://show"></Button>	
+						</Toolbar>
+						<Toolbar id="pdfApprovalToolbar2">
+							<Label text="Approval.pdf" design="Bold"></Label>
+							<Text id="pdfText4" text=""> </Text>	
+							
+							<ToolbarSpacer></ToolbarSpacer>
+							<Button id="displayApprovalPDF" press="onDisplayApprovalPDF" icon="sap-icon://show"></Button>	
+							<!--<Button id="downloadApprovalPDF" press="onDownloadApprovalPDF" icon="sap-icon://download"></Button>	-->
+						</Toolbar>
+					</Panel>
+				
+					
+					
+					<Panel id="panel2"  >
+						
+						<!--<Table showNoData="false">-->
+						<!--    <columns>-->
+						<!--    	<Column  demandPopin="true" width="30%" >-->
+						<!--			<Text text="Type" />-->
+						<!--		</Column>-->
+						<!--		<Column  demandPopin="true">-->
+						<!--			<Text text="Date" />-->
+						<!--		</Column>-->
+						<!--		<Column  demandPopin="true">-->
+						<!--			<Text text="Cash Memo" />-->
+						<!--		</Column>-->
+						<!--		<Column  demandPopin="true">-->
+						<!--			<Text text="Amount" />-->
+						<!--		</Column>-->
+						<!--    </columns>-->
+						<!--</Table>-->
+						<!--ADDING A SCROLL BAR THAT'S WHY TWO TABLE CONTROLS ARE USED-->
+						<!--<ScrollContainer   -->
+						<!--   height="450px"-->
+						<!--   vertical="true"-->
+						<!--   focusable="true">-->
+						
+						<Table id="reviewTable" growingScrollToLoad="true" 
+							growingThreshold="10"
+							growing="true"
+							alternateRowColors="false"
+							items="{detailMasterModel>/}" >
+							<!--<columns>-->
+							<!--	<Column width="30%">-->
+							<!--	</Column>-->
+							<!--	<Column>-->
+							<!--	</Column>-->
+							<!--	<Column>-->
+							<!--	</Column>-->
+							<!--	<Column>-->
+							<!--	</Column>-->
+							<!--</columns>-->
+							 <columns>
+						    	<Column  demandPopin="true" width="30%" >
+									<Text text="Type" />
+								</Column>
+								<Column  demandPopin="true">
+									<Text text="Date" />
+								</Column>
+								<Column  demandPopin="true">
+									<Text text="Cash Memo" />
+								</Column>
+								<Column  demandPopin="true">
+									<Text text="Amount" />
+								</Column>
+						    </columns>
+							<items>
+								<ColumnListItem id="columnId" >
+									
+										
+									<cells>
+										<ObjectIdentifier text="{detailMasterModel>Fcnam}" 
+														title="{
+															path:'detailMasterModel>C04t3',
+															formatter:'.formatter.formatItemType'
+															}" >
+											
+										</ObjectIdentifier>
+										<Text text="{
+													path:'detailMasterModel>Cdt01',
+													formatter:'.formatter.formatReqDate'
+													}" >
+											
+										</Text>
+										<Text text="{detailMasterModel>ConsultNo}" ></Text>
+										<Label text="Rs. {detailMasterModel>Rqamt}" design="Bold"></Label>
+										
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					<!--</ScrollContainer>-->
+					</Panel>
+					
+					<!--<Panel id="panelPdf">-->
+					<!--	<headerToolbar>-->
+					<!--		<OverflowToolbar height="3rem">-->
+					<!--			<Title text="New Attachment"/>-->
+					<!--			<ToolbarSpacer />-->
+					<!--				<Button text="Attachment" type="Emphasized" id="attachBtn" press="onAttachment"  visible="{buttonsModel>/mAttach}"></Button>-->
+					<!--		</OverflowToolbar>-->
+					<!--	</headerToolbar>-->
+					<!--	<Toolbar id="pdfToolbar">-->
+					<!--		<Label text="ExpenseReport.pdf" design="Bold"></Label>-->
+					<!--		<Text id="pdfText" text=""> </Text>	-->
+							
+					<!--		<ToolbarSpacer></ToolbarSpacer>-->
+					<!--		<Button id="displayPDF" press="onDisplayPDF" icon="sap-icon://show"></Button>	-->
+					<!--		<Button id="downloadPDF" press="onDownloadPDF" icon="sap-icon://download"></Button>	-->
+					<!--	</Toolbar>-->
+						
+					<!--	<Toolbar id="pdfApprovalToolbar">-->
+					<!--		<Label text="Approval.pdf" design="Bold"></Label>-->
+					<!--		<Text id="pdfText2" text=""> </Text>	-->
+							
+					<!--		<ToolbarSpacer></ToolbarSpacer>-->
+					<!--		<Button id="displayApprovalPDF" press="onDisplayApprovalPDF" icon="sap-icon://show"></Button>	-->
+					<!--		<Button id="downloadApprovalPDF" press="onDownloadApprovalPDF" icon="sap-icon://download"></Button>	-->
+					<!--	</Toolbar>-->
+					<!--</Panel>-->
+					
+					
+				
+			
+					
+					
+				</content>
+				<footer>
+					<OverflowToolbar>
+						<Button icon="sap-icon://message-popup" type="Reject" id="errorBtn" press="handleMessagePopoverPress"  visible="false"></Button>
+						<!--<Button text="Attachment" type="Emphasized" id="attachBtn" press="onAttachment"  visible="{buttonsModel>/mAttach}"></Button>-->
+				
+						<ToolbarSpacer></ToolbarSpacer>
+						<Button text="Save Draft" type="Emphasized" id="draftBtn" press="onSaveDraft"  visible="{buttonsModel>/rSaveDraft}"></Button>
+						<Button text="Submit" type="Accept" id="submitBtn" press="onSubmit" visible="{buttonsModel>/rSubmit}"></Button>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,114 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<!--<VBox class="sapUiSmallMargin">-->
+		<!--<f:SimpleForm id="SimpleFormDisplay"-->
+		<!--	editable="false"-->
+		<!--	layout="ResponsiveGridLayout"-->
+		<!--	title="Consultation"-->
+		<!--	labelSpanXL="6"-->
+		<!--	labelSpanL="4"-->
+		<!--	labelSpanM="2"-->
+		<!--	labelSpanS="2"-->
+		<!--	adjustLabelSpan="true"-->
+		<!--	emptySpanXL="4"-->
+		<!--	emptySpanL="4"-->
+		<!--	emptySpanM="4"-->
+		<!--	emptySpanS="2"-->
+		<!--	columnsXL="2"-->
+		<!--	columnsL="1"-->
+		<!--	columnsM="1"-->
+		<!--	singleContainerFullSize="false" >-->
+		<!--	<f:content>-->
+				<!--<core:Title text="Office" />-->
+		<!--		<Label text="Patient" />-->
+		<!--		<Input value="Patient" />-->
+		<!--		<Label text="Claim Date" />-->
+		<!--		<Input value="12/12/2019" />-->
+		<!--		<Label text="Name of Physician" />-->
+		<!--		<Input value="" />-->
+		<!--		<Label text="Consultation Type" />-->
+		<!--		<Input value="" />-->
+		
+		<!--		<Label text="Consult. No" />-->
+		<!--		<Input value="" />-->
+		<!--		<Label text="Out Station" />-->
+		<!--		<Input value="" />-->
+		<!--		<Label text="City type" />-->
+		<!--		<Input value="Patient" />-->
+		<!--		<Label text="Place" />-->
+		<!--		<Input value="12/12/2019" />-->
+		<!--		<Label text="Requested Amount" />-->
+		<!--		<Input value="" />-->
+		<!--		<Label text="Approved Amount " />-->
+		<!--		<Input value="" />-->
+		<!--		<Label text="Remarks Dropdown " />-->
+		<!--		<Input value="" />-->
+				
+				
+				
+				
+		<!--	</f:content>-->
+		<!--</f:SimpleForm>-->
+	<f:SimpleForm id="formConsultationCreate"
+			editable="true"
+			layout="ColumnLayout"
+			title="Consultation" >
+			<f:content>
+				<Label text="Patient" />
+				<!-- Select changes by Usmana -->
+				<Select id="cPatient" width="auto" items="{patientModel>/patientData/}" selectedKey="" change="ontextChange" forceSelection="false">
+						<core:Item key="{patientModel>Text}" text="{patientModel>Text}" />
+				</Select>
+				
+				<Label text="Invoice Date" />
+				<DatePicker id="cClaimDate" change="ontextChange"/>
+				
+				<Label text="Name of Physician" />
+				<Input value="" id="cPhysician" maxLength="30"  placeholder="Max 30 characters" liveChange="ontextChange"/>
+				
+				<Label text="Consultation Type" />
+				<Select id="cConsultationType" width="auto" items="{InitialModel>/F4_CONSULT_TYPESet}" change="onConsultationTypeChange">
+						<core:Item key="{InitialModel>Soval}" text="{InitialModel>Sotxt}" />
+				</Select>
+				
+				<Label text="Doc Catalog" />
+				<Select id="cDocCatalog" width="auto" items="{docModel>/}" change="ontextChange">
+						<core:Item key="{docModel>Soval}" text="{docModel>Sotxt}" />
+				</Select>
+				
+				<Label text="Consult. No" />
+				<Input value="" id="cConsultNumber" maxLength="30" placeholder="Max 30 characters" liveChange="ontextChange"/>
+				
+				<Label text="Out Station" />
+				<Select id="cOutStation" width="auto" items="{InitialModel>/f4_outstationSet}" change="ontextChange">
+						<core:Item key="{InitialModel>Value}" text="{InitialModel>Text}" />
+				</Select>
+				
+				<Label text="City type" />
+				<Select id="cCityType" width="auto" items="{InitialModel>/F4_city_typeSet}" change="ontextChange">
+						<core:Item key="{InitialModel>Value}" text="{InitialModel>Text}" />
+				</Select>
+				
+				<Label text="Place of Treatment" />
+				<Input value="" id="cPlace" maxLength="50" placeholder="Max 50 characters" liveChange="ontextChange"/>
+				
+				<!--<Label text="Tax Exemption" />-->
+				<!--<Select id="cTaxExmp" width="auto" items="{InitialModel>/F4_Tax_ExempSet}" change="OnTaxSelection" selectedKey="No">-->
+				<!--		<core:Item key="{InitialModel>Text}" text="{InitialModel>Text}" />-->
+				<!--</Select>-->
+				
+				<Label text="Requested Amount" />
+				<Input value="" id="cReqAmt" type="Number" maxLength="10" liveChange="onLiveReqAmt" placeholder="Max 10 digits"/>
+				
+                <Label text="CovidExpensess" />
+                <Select id="covidRequestCons_create" selectedKey="No" width="auto" items="{/data}" change="ontextChange">
+						<core:Item key="{key}" text="{text}" />
+				</Select>				
+				
+			</f:content>
+		</f:SimpleForm>
+	<!--</VBox>-->
+</core:FragmentDefinition>

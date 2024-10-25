@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
+	<Dialog title="Terms and Conditions" titleAlignment="Center" showHeader="false">
+		<content>
+			<VBox>
+			<FormattedText class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop" htmlText="&lt;strong> &lt;center>I Certified that:&lt;/center>&lt;/strong>" />
+			<!--FormattedText id="AnnexureHeading" htmlText='<center>This text will be center-aligned.</center>'/!-->
+			<Text class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop" 
+			text="1) The dependent(s) in respect of whom this claim is being made (a) fulfils the notified criteria for dependency; and (b) their details have been duly updated in the SAP-HR ESS portal."/>
+			<Text class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop"
+				text="2) I hereby undertake that I shall keep all the original bills/receipts and the supporting documents relating to this claim for 2 (two) financial years and I will produce the original bills/receipts on demand."/>
+			<Text class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop"
+				text="3) The above medical expenses reimbursement claim has not been preferred earlier."/>
+			<Text class="sapUiSmallMarginBeginEnd sapUiTinyMarginTop" 
+			text="4) I hereby confirm that the above claim is as per the GAIL Medical Attendance (MA) Rules. If any discrepancy whatsoever is noticed at any time I shall be liable for action as per the Company rules in force from time to time."/>
+			<HBox>
+			<CheckBox id="FirstCheckBox" class="sapUiSmallMarginBegin sapUiSmallMarginTop" valueState="Success" select="checkBoxEventHandler"/>
+			<FormattedText class="sapUiSmallMarginTop" htmlText="&lt;strong> &lt;center>I Agree:&lt;/center>&lt;/strong>" />
+			</HBox>
+			</VBox>
+		</content>
+		<beginButton >
+			<Button id="btnContinue" visible="false" type="Accept" text="Continue" press="onContinue"/>
+		</beginButton>
+		<endButton>
+			<Button type="Reject" text="Close" press="onTCDialog"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

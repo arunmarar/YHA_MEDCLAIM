@@ -1,0 +1,68 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+
+	<f:SimpleForm id="formOthersEdit"
+			editable="true"
+			layout="ColumnLayout"
+			title="Others" >
+			<f:content>
+				<Label text="Patient" />
+				<Select id="oPatientE" width="auto" items="{InitialModel>/f4_patientSet}" selectedKey="{detailMasterModel>Fcnam}" change="ontextChange">
+						<core:Item key="{InitialModel>Text}" text="{InitialModel>Text}" />
+				</Select>
+				
+				<Label text="Invoice Date" />
+				<DatePicker id="oClaimDateE" dateValue="{detailMasterModel>Cdt01}" change="ontextChange"/>
+				
+				<Label text="Cash Memo" />
+				<Input value="{detailMasterModel>ConsultNo}" id="oCashMemoE" maxLength="30" placeholder="Max 30 characters" liveChange="ontextChange"/>
+			
+				<Label text="Name of Physician/Hospital" />
+				<Input value="{detailMasterModel>ClinicName}" id="oPhysicianE" maxLength="20" placeholder="Max 20 characters" liveChange="ontextChange" />
+			
+				<Label text="Claim Type" />
+				<Select id="oClaimTypeE" width="auto" items="{InitialModel>/F4_sub_claimSet}" selectedKey="{detailMasterModel>C10t2}" change="onOtherClaimTypeChangeEdit">
+						<core:Item key="{InitialModel>Value}" text="{InitialModel>Text}" />
+				</Select>
+					
+				
+				<Label text="Other"  visible="{= RegExp('OT', 'i').test(${detailMasterModel>C10t2})}"/>
+				<Input visible="{= RegExp('OT', 'i').test(${detailMasterModel>C10t2}) }" value="{detailMasterModel>C80t1}" id="otherFreeTextE"  maxLength="30" placeholder="Max 30 characters" liveChange="ontextChange"/>
+			
+				<Label text="Particulars" required="true" />
+				<Input value="{detailMasterModel>Particulars}" id="oParticularsE" maxLength="50" placeholder="Max 50 characters" liveChange="ontextChange"/>
+				
+				
+				<Label text="Out Station" />
+				<Select id="oOutStationE" width="auto" items="{InitialModel>/f4_outstationSet}" selectedKey="{detailMasterModel>Outstation}" change="ontextChange">
+						<core:Item key="{InitialModel>Value}" text="{InitialModel>Text}" />
+				</Select>
+				
+				<Label text="City type" />
+				<Select id="oCityTypeE" width="auto" items="{InitialModel>/F4_city_typeSet}" selectedKey="{detailMasterModel>CityType}" change="ontextChange">
+						<core:Item key="{InitialModel>Value}" text="{InitialModel>Text}" />
+				</Select>
+				
+				<Label text="Place of Treatment" />
+				<Input value="{detailMasterModel>Place}" id="oPlaceE" maxLength="50" placeholder="Max 50 characters" liveChange="ontextChange"/>
+				
+				<Label text="Recommended" />
+				<Select id="oRecommendedE" width="auto" items="{InitialModel>/f4_recommendedSet}" selectedKey="{detailMasterModel>Recommended}" change="ontextChange">
+						<core:Item key="{InitialModel>Value}" text="{InitialModel>Text}" />
+				</Select>
+				
+				<!--Select id="oTaxExmpE" width="auto" change="OnTaxSelection" items="{InitialModel>/F4_Tax_ExempSet}" selectedKey="{detailMasterModel>C10t1}">
+						<core:Item key="{InitialModel>Text}" text="{InitialModel>Text}" />
+				</Select-->
+				
+				<Label text="Requested Amount" />
+				<Input value="{detailMasterModel>Rqamt}" id="oReqAmtE" type="Number" maxLength="10" liveChange="onLiveReqAmt" placeholder="Max 10 digits"/>
+				
+				
+			</f:content>
+		</f:SimpleForm>
+
+</core:FragmentDefinition>

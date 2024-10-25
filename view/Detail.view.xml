@@ -1,0 +1,137 @@
+<mvc:View
+	controllerName="Gail.Medical_Claim.controller.Detail"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page title="Detail" id= "detailPage"
+			showHeader="true" >
+		<customHeader>
+			<Bar>
+				<contentLeft>
+					<Button id="closebtn" press="onCloseDetailPress" icon="sap-icon://nav-back" visible="{buttonsModel>/navbackDetail}"></Button>
+					<Text  text="Item Type" id="itemText" visible="{buttonsModel>/dSelect}" ></Text>
+					<Select id="itemName" width="auto" items="{InitialModel>/F4_claim_typeSet}" change="onItemSelection" visible="{buttonsModel>/dSelect}">
+						<core:Item key="{InitialModel>Value}" text="{InitialModel>Text}" />
+					</Select>
+					
+					<!--Select id="itemName" width="auto"
+							change="onItemSelection"
+							visible="{buttonsModel>/dSelect}">
+						
+						<core:Item key="" text="" />
+						<core:Item key="CON" text="Consultation" />
+						<core:Item key="MED" text="Medicines" />
+						<core:Item key="TST" text="Tests" />
+						<core:Item key="HOS" text="Hospitalization" />
+						<core:Item key="TRV" text="Travel Expenses" />
+						<core:Item key="OTH" text="Others" />
+						
+					</Select-->
+				
+				</contentLeft>
+				<contentMiddle>
+					<Label text="Item Details"></Label>
+				</contentMiddle>
+				<contentRight>
+					<!--<Button id="fullscreenbtn" press="toggleFullScreen" icon="sap-icon://full-screen"></Button>-->
+					<!--<Button id="closebtn" press="onCloseDetailPress" icon="sap-icon://decline"></Button>-->
+				</contentRight>
+			</Bar>
+		</customHeader>
+			<!--<OverflowToolbar>-->
+			<!--		<Text  text="Item Type" ></Text>-->
+			<!--		<Select id="itemName" width="auto"-->
+			<!--				change="onItemSelection">-->
+						
+			<!--			<core:Item key="" text="" />-->
+			<!--			<core:Item key="CON" text="Consultation" />-->
+			<!--			<core:Item key="MED" text="Medicines" />-->
+			<!--			<core:Item key="TES" text="Tests" />-->
+			<!--			<core:Item key="HOS" text="Hospitalisation" />-->
+			<!--			<core:Item key="TRA" text="Travel Expenses" />-->
+			<!--		</Select>-->
+			<!--		<ToolbarSpacer></ToolbarSpacer>-->
+			<!--		<Button id="fullscreenbtn" press="toggleFullScreen" icon="sap-icon://full-screen"></Button>-->
+			<!--		<Button id="closebtn" press="onCloseDetailPress" icon="sap-icon://decline"></Button>-->
+					
+			<!--</OverflowToolbar>-->
+			
+		<content>	
+		
+		
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<Button text="Edit" type="Emphasized" id="editBtn" press="onEdit" visible="{buttonsModel>/dEdit}"></Button>
+				<Button text="Delete" type="Reject" id="deleteMBtn" press="onDeleteM" visible="{buttonsModel>/mDelete}"></Button>
+				<ToolbarSpacer></ToolbarSpacer>
+				<Button text="Add Item" type="Emphasized" id="addBtn" press="onPrevBillCheck" visible="{buttonsModel>/dAdd}"></Button>
+				<Button text="Save" type="Accept" id="saveBtn" press="onSave" visible="{buttonsModel>/dSave}"></Button>
+				<Button text="Clear" type="Reject" id="clearBtn" press="clearData" visible="{buttonsModel>/dClear}"></Button>
+				
+			</OverflowToolbar>
+		</footer>
+		
+		
+	</Page>	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	<!--Standard code with semantic PAge	-->
+		
+		
+	<!--<semantic:SemanticPage-->
+	<!--	id="detailPage"-->
+	<!--	busy="{detailView>/busy}"-->
+	<!--	busyIndicatorDelay="{detailView>/delay}">-->
+	<!--	<semantic:titleHeading>-->
+	<!--		<Title-->
+	<!--			text="{/Refnr}"-->
+	<!--			level="H2"/>-->
+	<!--	</semantic:titleHeading>-->
+		<!--<semantic:headerContent>-->
+		<!--	<ObjectAttribute title="{i18n>priceTitle}"/>-->
+
+		<!--</semantic:headerContent>-->
+		<!--<semantic:content>-->
+		
+			
+			
+		<!--</semantic:content>-->
+		<!--Semantic ShareMenu Buttons-->
+		
+		<!--<semantic:sendEmailAction>-->
+		<!--	<semantic:SendEmailAction-->
+		<!--		id="shareEmail"-->
+		<!--		press=".onSendEmailPress"/>-->
+		<!--</semantic:sendEmailAction>-->
+
+	<!--	<semantic:closeAction>-->
+	<!--		<semantic:CloseAction-->
+	<!--				id="closeColumn"-->
+	<!--				press=".onCloseDetailPress"/>-->
+	<!--	</semantic:closeAction>-->
+
+	<!--	<semantic:fullScreenAction>-->
+	<!--		<semantic:FullScreenAction-->
+	<!--				id="enterFullScreen"-->
+	<!--				visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}"-->
+	<!--				press=".toggleFullScreen"/>-->
+	<!--	</semantic:fullScreenAction>-->
+	<!--	<semantic:exitFullScreenAction>-->
+	<!--		<semantic:ExitFullScreenAction-->
+	<!--				id="exitFullScreen"-->
+	<!--				visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}"-->
+	<!--				press=".toggleFullScreen"/>-->
+	<!--	</semantic:exitFullScreenAction>-->
+
+	<!--</semantic:SemanticPage>-->
+
+</mvc:View>

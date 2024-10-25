@@ -1,0 +1,244 @@
+{
+    "_version": "1.5.0",
+    "sap.app": {
+        "id": "Gail.Medical_Claim",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "resources": "resources.json",
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/YHR_MEDICAL_CLAIM_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "YHR_MEDICAL_CLAIM_SRV": {
+                "uri": "/sap/opu/odata/sap/YHR_MEDICAL_CLAIM_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/YHR_MEDICAL_CLAIM_SRV/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "sap.ui.ui5-template-plugin.2masterdetail",
+            "version": "1.44.7",
+            "toolsId": "e7828c20-67cb-43c8-8d50-f6742a57c5b2"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://detail-view",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_bluecrystal"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "Gail.Medical_Claim.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.36.0",
+            "libs": {
+                "sap.ui.core": {
+                    "minVersion": "1.36.0"
+                },
+                "sap.m": {
+                    "minVersion": "1.36.0"
+                },
+                "sap.ui.layout": {
+                    "minVersion": "1.36.0"
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "Gail.Medical_Claim.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": false
+            },
+            "InitialModel": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "YHR_MEDICAL_CLAIM_SRV",
+                "preload": true
+            },
+            "detailMasterModel": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "buttonsModel": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "FileReaderModel": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "TnC": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "OriginalPdfFiles": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "ErrorMessages": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "RouteModel": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "docModel": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "overViewModel": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "empItemData": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "invoiceDate": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "prevBills": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "empFamDetails": {
+                "type": "sap.ui.model.json.JSONModel"
+            }
+        },
+        "resources": {
+            "js": [
+                {
+                    "uri": "lib/jspdf.js"
+                },
+                {
+                    "uri": "lib/exif.js"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "Gail.Medical_Claim.view",
+                "controlId": "idAppControl",
+                "controlAggregation": "detailPages",
+                "bypassed": {
+                    "target": [
+                        "master",
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "initial",
+                    "target": "initial"
+                },
+                {
+                    "pattern": "master/{claimId}",
+                    "name": "master",
+                    "target": "master"
+                },
+                {
+                    "pattern": "claim/{objectId}",
+                    "name": "object",
+                    "target": [
+                        "master",
+                        "object"
+                    ]
+                },
+                {
+                    "pattern": "review",
+                    "name": "review",
+                    "target": "review"
+                },
+                {
+                    "pattern": "attachment",
+                    "name": "attachment",
+                    "target": "attach"
+                }
+            ],
+            "targets": {
+                "master": {
+                    "viewName": "Master",
+                    "viewLevel": 1,
+                    "controlId": "idAppControl",
+                    "controlAggregation": "masterPages"
+                },
+                "object": {
+                    "viewName": "Detail",
+                    "viewId": "detail",
+                    "viewLevel": 1,
+                    "controlId": "idAppControl",
+                    "controlAggregation": "detailPages"
+                },
+                "detailObjectNotFound": {
+                    "viewName": "DetailObjectNotFound",
+                    "viewId": "detailObjectNotFound"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "initial": {
+                    "viewType": "XML",
+                    "viewName": "Initial",
+                    "controlId": "app",
+                    "controlAggregation": "pages"
+                },
+                "review": {
+                    "viewType": "XML",
+                    "viewName": "Review",
+                    "controlId": "app",
+                    "controlAggregation": "pages"
+                },
+                "attach": {
+                    "viewType": "XML",
+                    "viewName": "Attachment",
+                    "controlId": "app",
+                    "controlAggregation": "pages"
+                }
+            }
+        }
+    },
+    "sap.platform.hcp": {
+        "uri": "webapp",
+        "_version": "1.1.0"
+    }
+}

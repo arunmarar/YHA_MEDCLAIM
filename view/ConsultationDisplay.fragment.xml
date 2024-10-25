@@ -1,0 +1,126 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<!--<VBox class="sapUiSmallMargin">-->
+		<!--<f:SimpleForm id="SimpleFormDisplay"-->
+		<!--	editable="false"-->
+		<!--	layout="ResponsiveGridLayout"-->
+		<!--	title="Consultation"-->
+		<!--	labelSpanXL="6"-->
+		<!--	labelSpanL="4"-->
+		<!--	labelSpanM="2"-->
+		<!--	labelSpanS="2"-->
+		<!--	adjustLabelSpan="true"-->
+		<!--	emptySpanXL="4"-->
+		<!--	emptySpanL="4"-->
+		<!--	emptySpanM="4"-->
+		<!--	emptySpanS="2"-->
+		<!--	columnsXL="2"-->
+		<!--	columnsL="1"-->
+		<!--	columnsM="1"-->
+		<!--	singleContainerFullSize="false" >-->
+		<!--	<f:content>-->
+				<!--<core:Title text="Office" />-->
+		<!--		<Label text="Patient" />-->
+		<!--		<Text text="Patient" />-->
+		<!--		<Label text="Claim Date" />-->
+		<!--		<Text text="12/12/2019" />-->
+		<!--		<Label text="Name of Physician" />-->
+		<!--		<Text text="" />-->
+		<!--		<Label text="Consultation Type" />-->
+		<!--		<Text text="" />-->
+		
+		<!--		<Label text="Consult. No" />-->
+		<!--		<Text text="" />-->
+		<!--		<Label text="Out Station" />-->
+		<!--		<Text text="" />-->
+		<!--		<Label text="City type" />-->
+		<!--		<Text text="Patient" />-->
+		<!--		<Label text="Place" />-->
+		<!--		<Text text="12/12/2019" />-->
+		<!--		<Label text="Requested Amount" />-->
+		<!--		<Text text="" />-->
+		<!--		<Label text="Approved Amount " />-->
+		<!--		<Text text="" />-->
+		<!--		<Label text="Remarks Dropdown " />-->
+		<!--		<Text text="" />-->
+				
+				
+				
+				
+		<!--	</f:content>-->
+		<!--</f:SimpleForm>-->
+	<f:SimpleForm id="formConsultationDisplay"
+			editable="false"
+			layout="ColumnLayout"
+			title="Consultation" >
+			<f:content>
+				<Label text="Patient" />
+				<Text text="{detailMasterModel>Fcnam}" />
+
+				<Label text="Invoice Date" />
+				<Text text="{
+						path:'detailMasterModel>Cdt01',
+						formatter:'.formatter.formatReqDate'
+						}" />
+				
+				<Label text="Name of Physician" />
+				<Text text="{detailMasterModel>Physician}" />
+				
+				<Label text="Consultation Type" />
+				<Text text="{
+						path:'detailMasterModel>C04t4',
+						formatter:'.formatter.formatConsultationType' 
+						}" />
+				
+				<Label text="Doc Catalog" />
+				<Text text="{ 
+						path:'detailMasterModel>C04t5',
+						formatter:'.formatter.formatDocCataloge'
+						}" />
+				
+				<Label text="Consult. No" />
+				<Text text="{detailMasterModel>ConsultNo}" />
+				
+				<Label text="Out Station" />
+				<Text text="{ 
+						path:'detailMasterModel>Outstation',
+						formatter:'.formatter.formatOutStatioin'
+						}" />
+				
+				<Label text="City type" />
+				<Text text="{
+						path:'detailMasterModel>CityType',
+						formatter:'.formatter.formatCityType'
+						}" />
+				
+				<Label text="Place of Treatment" />
+				<Text text="{detailMasterModel>Place}" />
+				
+				<!--<Label text="Tax Exemption" />-->
+				<!--<Text text="{ -->
+				<!--		path:'detailMasterModel>C10t1',-->
+				<!--		formatter:'.formatter.formatTaxType'-->
+				<!--		}" />-->
+				
+				<Label text="Requested Amount" />
+				<Text text="{detailMasterModel>Rqamt}" />
+				
+				<Label text="Approved Amount" />
+				<Text text="{detailMasterModel>Apamt}" />
+				
+				
+				<Label text="Remarks" />
+				<Text text="{detailMasterModel>Remarks}" />
+
+                <Label text="CovidExpensess" />
+				<Text text="{detailMasterModel>C10t3}" />
+				
+				
+				
+			</f:content>
+		</f:SimpleForm>
+	<!--</VBox>-->
+</core:FragmentDefinition>
